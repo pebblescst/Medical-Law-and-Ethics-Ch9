@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Law &amp; Ethics — Chapter 9</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  :root {
+    --indigo:  #3730A3; --indigo-lt:#E0E7FF; --indigo-dk:#1E1B4B;
+    --blue:    #1D4ED8; --blue-lt:  #DBEAFE; --blue-dk:  #1E3A8A;
+    --teal:    #0E7490; --teal-lt:  #CFFAFE; --teal-dk:  #083344;
+    --green:   #166534; --green-lt: #DCFCE7; --green-dk: #052E16;
+    --amber:   #B45309; --amber-lt: #FEF3C7; --amber-dk: #451A03;
+    --coral:   #C2410C; --coral-lt: #FFEDD5; --coral-dk: #431407;
+    --violet:  #6D28D9; --violet-lt:#EDE9FE; --violet-dk:#2E1065;
+    --rose:    #9D174D; --rose-lt:  #FCE7F3; --rose-dk:  #500724;
+    --slate:   #334155; --slate-lt: #F1F5F9; --slate-dk: #0F172A;
+    --red:     #991B1B; --red-lt:   #FEE2E2; --red-dk:   #450A0A;
+    --gray-50: #F9FAFB; --gray-100: #F3F4F6; --gray-200: #E5E7EB;
+    --gray-400:#9CA3AF; --gray-600: #4B5563; --gray-700: #374151; --black:#111827;
+    --font:'DM Sans',sans-serif; --mono:'DM Mono',monospace;
+    --radius:10px; --radius-sm:6px;
+  }
+  body { font-family:var(--font); background:var(--gray-50); color:var(--black); }
+  .module { max-width:860px; margin:0 auto; padding:2rem 1.5rem 4rem; }
+  .module-header { background:var(--indigo-dk); border-radius:var(--radius); padding:1.75rem 2rem; margin-bottom:1.5rem; display:flex; gap:1.5rem; align-items:flex-start; }
+  .header-icon { width:52px; height:52px; border-radius:var(--radius-sm); background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .header-icon svg { width:28px; height:28px; stroke:#fff; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+  .header-text h1 { font-size:20px; font-weight:600; color:#fff; }
+  .header-text p  { font-size:13px; color:#A5B4FC; margin-top:3px; }
+  .progress-wrap { margin-top:14px; display:flex; align-items:center; gap:10px; }
+  .progress-bg   { flex:1; height:5px; background:rgba(255,255,255,0.2); border-radius:3px; overflow:hidden; }
+  .progress-fill { height:100%; background:#818CF8; border-radius:3px; transition:width 0.5s; width:0%; }
+  .progress-label { font-size:12px; color:#A5B4FC; white-space:nowrap; }
+  .nav-row { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:1.5rem; }
+  .tab { padding:7px 16px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; transition:all 0.15s; }
+  .tab:hover  { border-color:var(--indigo); color:var(--indigo); }
+  .tab.active { background:var(--indigo); border-color:var(--indigo); color:#fff; }
+  .section { display:none; }
+  .section.active { display:block; animation:fadeIn 0.2s ease; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:none} }
+  .card { background:#fff; border:1px solid var(--gray-200); border-radius:var(--radius); padding:1.25rem 1.5rem; margin-bottom:1rem; }
+  .card-title { font-size:14px; font-weight:600; margin-bottom:12px; }
+  .two-col   { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; }
+  @media(max-width:620px){ .two-col,.three-col { grid-template-columns:1fr } }
+  .badge { font-size:11px; font-weight:600; padding:2px 8px; border-radius:20px; }
+  .badge-indigo { background:var(--indigo-lt); color:var(--indigo-dk); }
+  .badge-blue   { background:var(--blue-lt);   color:var(--blue-dk); }
+  .badge-teal   { background:var(--teal-lt);   color:var(--teal-dk); }
+  .badge-green  { background:var(--green-lt);  color:var(--green-dk); }
+  .badge-amber  { background:var(--amber-lt);  color:var(--amber-dk); }
+  .badge-violet { background:var(--violet-lt); color:var(--violet-dk); }
+  .badge-red    { background:var(--red-lt);    color:var(--red-dk); }
+  .badge-slate  { background:var(--slate-lt);  color:var(--slate-dk); }
+  .badge-coral  { background:var(--coral-lt);  color:var(--coral-dk); }
+  .badge-rose   { background:var(--rose-lt);   color:var(--rose-dk); }
+  .tip { border-radius:var(--radius-sm); padding:10px 14px; font-size:13px; line-height:1.6; margin-top:10px; }
+  .tip.indigo { background:var(--indigo-lt); color:var(--indigo-dk); border-left:3px solid var(--indigo); }
+  .tip.blue   { background:var(--blue-lt);   color:var(--blue-dk);   border-left:3px solid var(--blue); }
+  .tip.teal   { background:var(--teal-lt);   color:var(--teal-dk);   border-left:3px solid var(--teal); }
+  .tip.green  { background:var(--green-lt);  color:var(--green-dk);  border-left:3px solid var(--green); }
+  .tip.amber  { background:var(--amber-lt);  color:var(--amber-dk);  border-left:3px solid var(--amber); }
+  .tip.violet { background:var(--violet-lt); color:var(--violet-dk); border-left:3px solid var(--violet); }
+  .tip.coral  { background:var(--coral-lt);  color:var(--coral-dk);  border-left:3px solid var(--coral); }
+  .tip.red    { background:var(--red-lt);    color:var(--red-dk);    border-left:3px solid var(--red); }
+  .tip.slate  { background:var(--slate-lt);  color:var(--slate-dk);  border-left:3px solid var(--slate); }
+  .vs-item { border:1px solid var(--gray-200); border-radius:var(--radius-sm); padding:10px 12px; }
+  .vs-head { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
+  .vs-body { font-size:13px; color:var(--gray-600); line-height:1.5; }
+  /* Schedule cards */
+  .sched-card { border-radius:var(--radius-sm); padding:13px 15px; display:flex; gap:12px; align-items:flex-start; margin-bottom:6px; }
+  .sched-num  { width:44px; height:44px; border-radius:var(--radius-sm); font-size:15px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-family:var(--mono); }
+  .sched-title { font-size:14px; font-weight:700; margin-bottom:4px; }
+  .sched-body  { font-size:12.5px; opacity:0.85; line-height:1.5; }
+  /* Abuse sign chips */
+  .sign-chip { display:flex; align-items:center; gap:7px; padding:6px 10px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); font-size:12px; color:var(--gray-700); }
+  .sign-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  /* Vital stat rows */
+  .vs-row { display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--gray-100); }
+  .vs-row:last-child { border-bottom:none; }
+  .vs-icon { font-size:18px; flex-shrink:0; width:28px; text-align:center; }
+  .vs-text { font-size:13px; color:var(--gray-700); line-height:1.4; }
+  /* Vaccine doc items */
+  .vac-row { display:flex; gap:10px; align-items:flex-start; padding:8px 0; border-bottom:1px solid var(--gray-100); }
+  .vac-row:last-child { border-bottom:none; }
+  .vac-num { width:24px; height:24px; border-radius:50%; font-size:11px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; background:var(--teal-lt); color:var(--teal-dk); }
+  .vac-text { font-size:13px; color:var(--gray-700); line-height:1.4; }
+  /* Flashcards */
+  .fc-nav { display:flex; align-items:center; gap:12px; margin-bottom:1rem; }
+  .fc-counter { font-size:13px; color:var(--gray-400); flex:1; text-align:center; }
+  .fc-btn { width:36px; height:36px; border:1px solid var(--gray-200); border-radius:50%; background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; color:var(--gray-600); font-size:16px; transition:all 0.15s; }
+  .fc-btn:hover { border-color:var(--indigo); color:var(--indigo); }
+  .flip-wrap { perspective:1000px; height:170px; cursor:pointer; user-select:none; }
+  .flip-inner { width:100%; height:100%; position:relative; transform-style:preserve-3d; transition:transform 0.5s cubic-bezier(.4,0,.2,1); }
+  .flip-inner.flipped { transform:rotateY(180deg); }
+  .flip-front,.flip-back { position:absolute; inset:0; backface-visibility:hidden; border-radius:var(--radius); display:flex; flex-direction:column; align-items:center; justify-content:center; padding:1.5rem; text-align:center; border:1px solid var(--gray-200); }
+  .flip-front { background:#fff; }
+  .flip-back  { background:var(--indigo-lt); border-color:#A5B4FC; transform:rotateY(180deg); }
+  .flip-term { font-size:20px; font-weight:600; color:var(--black); line-height:1.3; }
+  .flip-hint { font-size:11px; color:var(--gray-400); margin-top:6px; text-transform:uppercase; letter-spacing:0.06em; }
+  .flip-def  { font-size:14px; font-weight:600; color:var(--indigo-dk); line-height:1.4; }
+  .flip-ex   { font-size:12px; color:var(--indigo); margin-top:6px; line-height:1.4; }
+  .fc-shuffle { padding:6px 14px; font-size:12px; font-family:var(--font); border:1px solid var(--gray-200); border-radius:100px; background:#fff; color:var(--gray-600); cursor:pointer; margin-left:auto; display:block; margin-bottom:10px; }
+  .fc-shuffle:hover { border-color:var(--indigo); color:var(--indigo); }
+  .quiz-progress { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:1.25rem; }
+  .q-dot { width:10px; height:10px; border-radius:50%; background:var(--gray-200); }
+  .q-dot.pass { background:var(--indigo); }
+  .q-dot.fail { background:#E24B4A; }
+  .quiz-q-text { font-size:16px; font-weight:600; margin-bottom:1rem; line-height:1.5; }
+  .quiz-opts { display:flex; flex-direction:column; gap:8px; margin-bottom:1rem; }
+  .q-opt { padding:11px 16px; border:1px solid var(--gray-200); border-radius:var(--radius-sm); background:#fff; font-size:14px; font-family:var(--font); cursor:pointer; text-align:left; transition:all 0.15s; }
+  .q-opt:hover:not(:disabled) { border-color:var(--indigo); background:var(--indigo-lt); }
+  .q-opt.correct { background:var(--green-lt); border-color:var(--green); color:var(--green-dk); font-weight:500; }
+  .q-opt.wrong   { background:#FCEBEB; border-color:#E24B4A; color:#501313; }
+  .q-fb { font-size:13px; padding:9px 14px; border-radius:var(--radius-sm); margin-bottom:1rem; }
+  .q-fb.correct { background:var(--green-lt); color:var(--green-dk); }
+  .q-fb.wrong   { background:#FCEBEB; color:#501313; }
+  .quiz-next { padding:9px 20px; font-size:13px; font-family:var(--font); font-weight:500; border:1px solid var(--gray-200); border-radius:100px; background:#fff; cursor:pointer; }
+  .score-wrap { text-align:center; padding:2rem 0 1rem; }
+  .score-big { font-size:52px; font-weight:700; line-height:1; }
+  .score-big.great { color:var(--indigo); }
+  .score-big.ok    { color:var(--amber); }
+  .score-big.retry { color:#E24B4A; }
+  .score-msg { font-size:15px; color:var(--gray-600); margin-top:8px; margin-bottom:1.5rem; }
+  .retry-btn { padding:10px 24px; font-size:14px; font-family:var(--font); font-weight:500; border:1px solid var(--indigo); border-radius:100px; background:var(--indigo-lt); color:var(--indigo-dk); cursor:pointer; transition:all 0.15s; }
+  .retry-btn:hover { background:var(--indigo); color:#fff; }
+</style>
+</head>
+<body>
+<div class="module">
+
+  <div class="module-header">
+    <div class="header-icon">
+      <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div style="flex:1">
+      <div class="header-text">
+        <h1>Law &amp; Ethics for Health Professions — Chapter 9</h1>
+        <p>Public Health Responsibilities of Health Care Practitioners &nbsp;·&nbsp; Judson, 10th Ed. &nbsp;·&nbsp; 5 sections &nbsp;·&nbsp; 20 flashcards &nbsp;·&nbsp; 10-question quiz</p>
+      </div>
+      <div class="progress-wrap">
+        <div class="progress-bg"><div class="progress-fill" id="prog-fill"></div></div>
+        <div class="progress-label" id="prog-label">0%</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-row" role="tablist">
+    <button class="tab active" onclick="showSec('overview',this)">Overview</button>
+    <button class="tab" onclick="showSec('vital',this)">Vital statistics</button>
+    <button class="tab" onclick="showSec('pubhealth',this)">Public health functions</button>
+    <button class="tab" onclick="showSec('reportable',this)">Reportable diseases &amp; injuries</button>
+    <button class="tab" onclick="showSec('drugs',this)">Drug regulations</button>
+    <button class="tab" onclick="showSec('flashcards',this)">Flashcards</button>
+    <button class="tab" onclick="showSec('quiz',this)">Quiz</button>
+  </div>
+
+  <!-- ════════ OVERVIEW ════════ -->
+  <div class="section active" id="sec-overview">
+    <div class="card">
+      <div class="card-title" style="color:var(--indigo)">Chapter 9 — Learning Outcomes</div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+        <div class="vs-item"><div class="vs-head" style="color:var(--indigo)">9.1 — Vital statistics &amp; reporting</div><div class="vs-body">Define vital statistics and determine the purpose of collecting them; identify the types of vital statistics recorded and the reporting procedures that apply</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--blue)">9.2 — Public health functions</div><div class="vs-body">Summarize the purpose and impact of public health functions — including the constitutional basis, the role of federal, state, and local government, and the CDC's role</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--red)">9.3 — Reportable diseases and injuries</div><div class="vs-body">Cite examples of reportable diseases and injuries and explain the mandatory reporting obligations of healthcare practitioners — including abuse reporting, vaccines, and VAERS</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--amber)">9.4 — Federal drug regulations &amp; the Controlled Substances Act</div><div class="vs-body">Discuss the role of the FDA and DEA in drug regulation, and explain the five schedule system of the Controlled Substances Act with examples for each schedule</div></div>
+      </div>
+      <div class="tip indigo"><strong>Chapter focus:</strong> Healthcare practitioners have important public health obligations that go beyond caring for individual patients — they are legally required to collect and report data that protects the broader community. Chapter 9 covers vital statistics reporting, the legal framework of public health authority, mandatory disease and injury reporting, and the federal system regulating controlled substances.</div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--teal)">Forensic Medicine</div>
+      <div class="tip teal" style="margin-bottom:10px"><strong>Definition:</strong> The division of medicine that <strong>incorporates law and medicine</strong> — involves medical issues or medical proof at trials having to do with malpractice, crimes, and accidents.</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+        <div class="vs-item"><div class="vs-head" style="color:var(--teal)">Malpractice cases</div><div class="vs-body">Forensic experts analyze medical records, examine injuries, and provide expert testimony on whether the standard of care was met or breached — helping courts understand complex medical evidence</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--red)">Criminal cases</div><div class="vs-body">Forensic pathologists determine cause and manner of death; forensic specialists analyze blood spatter, bite marks, wound patterns, toxicology, and other medical evidence relevant to prosecution or defense</div></div>
+        <div class="vs-item"><div class="vs-head" style="color:var(--amber)">Accident cases</div><div class="vs-body">Medical evidence establishes the nature and extent of injuries, mechanism of injury, and causation — critical for personal injury litigation, workers' compensation, and insurance claims</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ VITAL STATISTICS ════════ -->
+  <div class="section" id="sec-vital">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--indigo)">Vital Statistics — Definition &amp; Purpose</div>
+        <div class="tip indigo" style="margin-bottom:12px"><strong>Definition:</strong> Numerical data collected by government officials to <strong>assess population trends and needs</strong>. "Vital" refers to life events — births, deaths, and changes in a person's civil status.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Four categories of vital statistics collected:</div>
+        <div style="display:flex;flex-direction:column;gap:0;margin-bottom:12px">
+          <div class="vs-row"><div class="vs-icon">👶</div><div class="vs-text"><strong>Live births</strong> — each birth generates a birth certificate; data tracks birth rates, demographics, and population growth patterns</div></div>
+          <div class="vs-row"><div class="vs-icon">⚰️</div><div class="vs-text"><strong>Deaths</strong> — each death generates a death certificate; data tracks mortality rates, causes of death, and epidemiological trends</div></div>
+          <div class="vs-row"><div class="vs-icon">📋</div><div class="vs-text"><strong>Fetal deaths and induced abortions</strong> — tracked separately from live births; provide data on reproductive health outcomes and prenatal care access</div></div>
+          <div class="vs-row"><div class="vs-icon">💍</div><div class="vs-text"><strong>Changes in individual's civil status</strong> — marriages, divorces, adoptions; affect legal status, insurance, and other population-level data</div></div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Who uses vital statistics data?</div>
+        <div style="display:flex;flex-wrap:wrap;gap:5px">
+          <span class="badge badge-indigo" style="font-size:12px;padding:4px 12px">Educational institutions</span>
+          <span class="badge badge-blue" style="font-size:12px;padding:4px 12px">Governmental agencies</span>
+          <span class="badge badge-teal" style="font-size:12px;padding:4px 12px">Research scientists</span>
+          <span class="badge badge-amber" style="font-size:12px;padding:4px 12px">Private industries</span>
+          <span class="badge badge-violet" style="font-size:12px;padding:4px 12px">Other organizations and individuals</span>
+        </div>
+        <div class="tip teal"><strong>Healthcare practitioners' role:</strong> Physicians, nurses, and other practitioners are legally required to complete vital records documents — birth certificates, death certificates, and fetal death reports. Failure to comply is a legal violation, not merely an administrative failure.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--blue)">Recording Births and Deaths</div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Guidelines for completing vital records forms:</div>
+        <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:12px">
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> Type or print all entries — handwriting must be legible; typed entries preferred for legal documents</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> Leave no entries blank — use "unknown" or "not applicable" where information is genuinely unavailable</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> Avoid corrections and erasures — corrections create legal questions about document authenticity</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> Provide signatures where requested — authorized practitioner signature is required for legal validity</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> File only originals with state registrars — official record requires original document submission</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> Verify spelling of names — errors in names on vital records cause significant legal problems for families</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">✓</span> Avoid abbreviations — use complete, standardized medical terminology</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0"><span style="color:var(--blue);font-weight:700">✓</span> Refer problems to state officials — do not guess; contact the appropriate state registrar for guidance</div>
+        </div>
+        <div class="card" style="border-color:var(--slate);margin-top:0">
+          <div class="card-title" style="color:var(--slate)">Death Certificate — Required Information &amp; Autopsy Triggers</div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:6px">Required on death certificate:</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px">
+            <span class="badge badge-red" style="font-size:12px;padding:4px 12px">Disease, injury, or complication causing death</span>
+            <span class="badge badge-blue" style="font-size:12px;padding:4px 12px">Date and time of death</span>
+            <span class="badge badge-teal" style="font-size:12px;padding:4px 12px">Place of death</span>
+            <span class="badge badge-violet" style="font-size:12px;padding:4px 12px">Pregnancy status (if female)</span>
+            <span class="badge badge-amber" style="font-size:12px;padding:4px 12px">Whether autopsy was performed</span>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:6px">Deaths subject to mandatory autopsy:</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:5px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--red);font-weight:700">⚠</span> Possibly due to <strong>criminal causes</strong></div>
+            <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:5px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--red);font-weight:700">⚠</span> <strong>Unattended death</strong> — no physician present or no documented medical care</div>
+            <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:5px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--red);font-weight:700">⚠</span> Cause of death <strong>undetermined</strong> by the physician</div>
+            <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:5px 0"><span style="color:var(--red);font-weight:700">⚠</span> <strong>Violent or otherwise suspicious</strong> death</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ PUBLIC HEALTH FUNCTIONS ════════ -->
+  <div class="section" id="sec-pubhealth">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--blue)">Constitutional Basis &amp; Federalism</div>
+        <div class="tip blue" style="margin-bottom:12px">Public health authority is inferred from the <strong>10th Amendment</strong> of the U.S. Constitution, which reserves all powers not delegated to the federal government to the states or to the people. This is why public health law is primarily <em>state</em> law — each state has broad authority to protect the health, safety, and welfare of its citizens.</div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Federalism in public health:</div>
+        <div class="vs-item" style="margin-bottom:10px">
+          <div class="vs-head" style="color:var(--blue)">Federalism</div>
+          <div class="vs-body">The sharing of power among <strong>national, state, and local governments</strong>. In public health, all three levels have roles: the federal government sets national standards, conducts research, and coordinates national responses; state governments have the primary authority to regulate health and safety; local governments implement and enforce state and local health codes.</div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Six provisions of public health statutes:</div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">→</span> Guard against unsanitary conditions in public facilities</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">→</span> Inspect establishments where food and drink are processed and sold</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">→</span> Exterminate pests and vermin that can spread disease</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">→</span> Check water quality</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0;border-bottom:1px solid var(--gray-100)"><span style="color:var(--blue);font-weight:700">→</span> Set up measures of control for certain diseases</div>
+          <div style="display:flex;gap:8px;font-size:13px;color:var(--gray-700);padding:6px 0"><span style="color:var(--blue);font-weight:700">→</span> Require physicians, school nurses, and other healthcare workers to file certain reports for the protection of citizens</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">State Enforcement Powers</div>
+        <div class="tip teal" style="margin-bottom:12px">States have broad police powers to protect the public health — including several powerful enforcement tools that may override individual preferences for the collective good.</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+          <div class="vs-item" style="border-color:var(--teal)"><div class="vs-head" style="color:var(--teal)">Disease outbreak investigations</div><div class="vs-body">States can require investigations when infectious disease outbreaks occur — compelling access to premises, records, and individuals to trace and contain the source</div></div>
+          <div class="vs-item" style="border-color:var(--blue)"><div class="vs-head" style="color:var(--blue)">Mandatory childhood vaccinations</div><div class="vs-body">States can make childhood vaccinations a condition for school entry — the Supreme Court has consistently upheld this authority as a legitimate exercise of state police power. Religious and medical exemptions vary by state.</div></div>
+          <div class="vs-item" style="border-color:var(--amber)"><div class="vs-head" style="color:var(--amber)">Tobacco advertising restrictions</div><div class="vs-body">Ban the distribution of free cigarette samples around schools or in areas where children congregate; restrict smoking in public places</div></div>
+          <div class="vs-item" style="border-color:var(--violet)"><div class="vs-head" style="color:var(--violet)">Smoking bans and restrictions</div><div class="vs-body">Enact smoking bans in public spaces — workplaces, restaurants, bars, parks — to protect the public from secondhand smoke exposure</div></div>
+          <div class="vs-item" style="border-color:var(--red)"><div class="vs-head" style="color:var(--red)">Involuntary detention (quarantine)</div><div class="vs-body">States may involuntarily detain (quarantine) individuals who have certain infectious diseases to prevent transmission to the public. This is one of the most powerful — and controversial — public health tools. Must meet constitutional due process requirements.</div></div>
+          <div class="vs-item" style="border-color:var(--slate)"><div class="vs-head" style="color:var(--slate)">Property seizure and destruction</div><div class="vs-body">States can seize and/or destroy property to contain the threat of toxic substances — contaminated food, hazardous materials, or property presenting public health hazards</div></div>
+        </div>
+        <div class="card" style="border-color:var(--green)">
+          <div class="card-title" style="color:var(--green)">CDC — Centers for Disease Control and Prevention</div>
+          <div style="font-size:13px;color:var(--gray-600);line-height:1.9">
+            A federal agency providing a variety of <strong>protective and safety services and education</strong>.<br><br>
+            <strong>Primary function:</strong> Analyzes data to determine solutions for disease threats. Tracks disease patterns, conducts epidemiological investigations, publishes health guidelines, and coordinates national and international public health responses.<br><br>
+            <strong>Example of services:</strong> Notifies the public of food poisoning outbreaks; issues travel health advisories; maintains the national notifiable disease surveillance system; tracks vaccine safety through VAERS.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ REPORTABLE DISEASES & INJURIES ════════ -->
+  <div class="section" id="sec-reportable">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--red)">Reportable Diseases</div>
+        <div class="tip red" style="margin-bottom:12px">Reportable diseases are determined by <strong>each state</strong> — there is no single national list, though the CDC maintains the National Notifiable Diseases Surveillance System (NNDSS) that states voluntarily participate in. Healthcare practitioners are legally required to report diagnosed conditions from the state's reportable disease list.</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+          <div class="vs-item" style="border-color:var(--red)"><div class="vs-head" style="color:var(--red)">STIs — reported when diagnosed</div><div class="vs-body">Sexually transmitted infections must be reported to the public health department upon diagnosis — regardless of patient consent. This is a mandatory reporting obligation that overrides normal confidentiality. States typically handle partner notification programs.</div></div>
+          <div class="vs-item" style="border-color:var(--violet)"><div class="vs-head" style="color:var(--violet)">HIV notification</div><div class="vs-body">Notification of past and present sexual partners or needle-sharing partners of HIV-positive individuals. Many states have partner notification (contact tracing) programs. The tension between patient confidentiality and the duty to warn potential partners is one of the major ethical issues in this area.</div></div>
+          <div class="vs-item" style="border-color:var(--amber)"><div class="vs-head" style="color:var(--amber)">Public-facing workers — more stringent reporting</div><div class="vs-body">Communicable disease reporting is more stringent for patients who work with the public — healthcare workers, food handlers, teachers, daycare workers — because their infection poses a greater risk of community transmission.</div></div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:6px">Examples of reportable diseases (commonly tested):</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="badge badge-red" style="font-size:12px;padding:4px 12px">Mumps</span>
+          <span class="badge badge-coral" style="font-size:12px;padding:4px 12px">Pertussis (whooping cough)</span>
+          <span class="badge badge-amber" style="font-size:12px;padding:4px 12px">Poliomyelitis</span>
+          <span class="badge badge-violet" style="font-size:12px;padding:4px 12px">Rabies</span>
+          <span class="badge badge-blue" style="font-size:12px;padding:4px 12px">Tuberculosis (TB)</span>
+          <span class="badge badge-teal" style="font-size:12px;padding:4px 12px">Hepatitis (A, B, C)</span>
+          <span class="badge badge-green" style="font-size:12px;padding:4px 12px">Salmonella/E. coli</span>
+          <span class="badge badge-indigo" style="font-size:12px;padding:4px 12px">COVID-19</span>
+          <span class="badge badge-rose" style="font-size:12px;padding:4px 12px">Gonorrhea / Chlamydia / Syphilis</span>
+          <span class="badge badge-slate" style="font-size:12px;padding:4px 12px">Meningococcal disease</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--teal)">Vaccines &amp; VAERS</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+          <div class="vs-item" style="border-color:var(--teal)">
+            <div class="vs-head" style="color:var(--teal)">National Childhood Vaccine Injury Act (1986)</div>
+            <div class="vs-body">Established that manufacturers of certain childhood vaccines would have limited liability for adverse vaccine reactions. Recognized that vaccines carry rare but real risks, and that a federal compensation system was needed to maintain vaccine supply by protecting manufacturers from excessive liability.</div>
+          </div>
+          <div class="vs-item" style="border-color:var(--blue)">
+            <div class="vs-head" style="color:var(--blue)">National Vaccine Injury Compensation Program (VICP)</div>
+            <div class="vs-body">A no-fault federal program that compensates individuals who suffer serious adverse reactions to covered vaccines. Patients (or their families) file a claim; if successful, they are compensated without having to sue the manufacturer. Handling the claim first through the VICP is a prerequisite to most civil lawsuits against vaccine manufacturers.</div>
+          </div>
+          <div class="vs-item" style="border-color:var(--violet)">
+            <div class="vs-head" style="color:var(--violet)">Smallpox Emergency Personnel Protection Act (SEPPA)</div>
+            <div class="vs-body">Provides compensation for healthcare workers and emergency responders who suffer adverse reactions from smallpox vaccination administered as part of a government emergency preparedness program — separate from the general VICP</div>
+          </div>
+          <div class="vs-item" style="border-color:var(--amber)">
+            <div class="vs-head" style="color:var(--amber)">COVID-19 vaccines and boosters</div>
+            <div class="vs-body">Covered under the CARES Act's PREP Act framework during the public health emergency — provided liability immunity for manufacturers and administrators; compensation available through the Countermeasures Injury Compensation Program (CICP) rather than VICP</div>
+          </div>
+        </div>
+        <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Required vaccination documentation — 4 elements:</div>
+        <div style="display:flex;flex-direction:column;gap:3px;margin-bottom:10px">
+          <div class="vac-row"><div class="vac-num">1</div><div class="vac-text"><strong>Date vaccine was administered</strong> — must be recorded accurately; basis for follow-up scheduling</div></div>
+          <div class="vac-row"><div class="vac-num">2</div><div class="vac-num" style="display:none"></div><div class="vac-text"><strong>Vaccine manufacturer</strong> — identifies the specific product given</div></div>
+          <div class="vac-row"><div class="vac-num">3</div><div class="vac-text"><strong>Vaccine lot number</strong> — enables tracing in case of recall or adverse event investigation</div></div>
+          <div class="vac-row"><div class="vac-num">4</div><div class="vac-text"><strong>Name, address, and title of healthcare provider who administered the vaccine</strong> — identifies the responsible practitioner</div></div>
+        </div>
+        <div class="tip violet"><strong>VAERS — Vaccine Adverse Events Reporting System:</strong><br>
+          Healthcare practitioners must report to VAERS:<br>
+          ✦ <strong>Any event listed in the Vaccine Injury Table</strong> — a published list of adverse reactions that may be compensable under VICP<br>
+          ✦ <strong>Any contraindicating event listed in the manufacturer's package insert</strong> — events the manufacturer identifies as warning signs or contraindications<br>
+          VAERS is a passive surveillance system co-managed by the CDC and FDA — anyone can report, but healthcare practitioners have mandatory reporting obligations for covered vaccines.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--amber)">Reportable Injuries &amp; Abuse</div>
+      <div class="tip amber" style="margin-bottom:12px">Healthcare practitioners are legally required to report specific types of injuries and suspected abuse to appropriate authorities. These mandatory reporting laws override normal confidentiality protections and exist to protect vulnerable populations.</div>
+      <div class="two-col">
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Reportable injury types:</div>
+          <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+            <div class="vs-item" style="border-color:var(--red)"><div class="vs-head" style="color:var(--red)">Assault</div><div class="vs-body">Physical attack resulting in injury; must be reported to law enforcement in most states; healthcare providers treating assault victims have mandatory reporting obligations</div></div>
+            <div class="vs-item" style="border-color:var(--rose)"><div class="vs-head" style="color:var(--rose)">Rape / sexual assault</div><div class="vs-body">Most states require healthcare providers who treat rape victims to report to law enforcement; some states allow victim to opt out; evidence collection (rape kit) must be handled with strict chain-of-custody protocols</div></div>
+            <div class="vs-item" style="border-color:var(--violet)"><div class="vs-head" style="color:var(--violet)">Domestic violence — three subcategories</div><div class="vs-body"><strong>Child abuse:</strong> All states require mandatory reporting of suspected child abuse or neglect by healthcare practitioners — no proof required, only reasonable suspicion<br><strong>Spousal/intimate partner abuse:</strong> Reporting requirements vary by state — some require mandatory reporting; others rely on patient consent<br><strong>Elder abuse:</strong> All states require reporting of suspected elder abuse, neglect, or exploitation to adult protective services</div></div>
+          </div>
+          <div class="vs-item" style="border-color:var(--amber)">
+            <div class="vs-head" style="color:var(--amber)">Unborn Victims of Violence Act</div>
+            <div class="vs-body">Federal law (also called "Laci and Conner's Law") that recognizes an unborn child as a separate victim when a federal crime is committed against a pregnant woman and the child is killed or injured. Creates a separate criminal offense for harm to the fetus — important for forensic medicine and injury reporting in cases of violence against pregnant women.</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Signs of abuse — Physical indicators:</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-bottom:12px">
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--red)"></div>Unexplained fractures</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--red)"></div>Repeated injuries</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--red)"></div>Burns with unusual shapes</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--red)"></div>Friction burns</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--red)"></div>Bite marks</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--red)"></div>Malnutrition or dehydration</div>
+            <div class="sign-chip" style="grid-column:span 2"><div class="sign-dot" style="background:var(--red)"></div>Signs of possible sexual abuse</div>
+          </div>
+          <div style="font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:8px">Signs of abuse — Behavioral indicators:</div>
+          <div style="display:flex;flex-direction:column;gap:5px">
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--amber)"></div><strong>Illogical explanation for injuries</strong> — story doesn't match the injury pattern</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--amber)"></div><strong>Frequently changing physicians</strong> — "doctor shopping" to avoid pattern recognition</div>
+            <div class="sign-chip"><div class="sign-dot" style="background:var(--amber)"></div><strong>Changes in appetite</strong> — may indicate stress, depression, or physical deprivation</div>
+          </div>
+          <div class="tip red" style="margin-top:10px"><strong>Mandatory reporting obligation:</strong> Healthcare practitioners who have a reasonable suspicion of child abuse MUST report — even without proof. Good-faith reporters are protected from civil and criminal liability. Failure to report is itself a crime in all states.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ DRUG REGULATIONS ════════ -->
+  <div class="section" id="sec-drugs">
+    <div class="two-col">
+      <div class="card">
+        <div class="card-title" style="color:var(--amber)">Drug Regulators — FDA and DEA</div>
+        <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:12px">
+          <div class="vs-item" style="border-color:var(--blue)">
+            <div class="vs-head" style="color:var(--blue)">FDA — Food and Drug Administration</div>
+            <div class="vs-body">A federal agency within the <strong>Department of Health and Human Services (HHS)</strong>. Primary responsibilities in drug regulation:<br><br>
+            ✦ <strong>Tests and approves prescription drugs</strong> before they can be marketed and sold in the United States<br>
+            ✦ Evaluates drug safety and efficacy through the New Drug Application (NDA) process<br>
+            ✦ Approves drug labeling and requires accurate package inserts<br>
+            ✦ Monitors post-market drug safety through pharmacovigilance systems<br>
+            ✦ Regulates OTC (over-the-counter) medications, biologics, medical devices, and food safety<br>
+            ✦ Enforces drug advertising standards — pharmaceutical companies cannot make false claims</div>
+          </div>
+          <div class="vs-item" style="border-color:var(--red)">
+            <div class="vs-head" style="color:var(--red)">DEA — Drug Enforcement Administration</div>
+            <div class="vs-body">A branch (agency) within the <strong>U.S. Department of Justice</strong>. Primary responsibilities:<br><br>
+            ✦ <strong>Regulates the sale and use of drugs</strong> — particularly controlled substances<br>
+            ✦ Enforces the Controlled Substances Act (CSA)<br>
+            ✦ Issues DEA numbers to practitioners authorized to prescribe controlled substances<br>
+            ✦ Investigates drug trafficking and diversion<br>
+            ✦ Maintains the five-schedule system of controlled substance classification<br>
+            ✦ Can revoke prescribing authority and prosecute violations</div>
+          </div>
+        </div>
+        <div class="tip indigo"><strong>Key distinction:</strong> FDA = HHS, approves/tests drugs before market. DEA = Department of Justice, enforces controlled substance regulations. A practitioner can lose their DEA number (right to prescribe controlled substances) through disciplinary action even without losing their state medical license — and vice versa.</div>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:var(--violet)">Medical &amp; Recreational Marijuana</div>
+        <div class="tip violet" style="margin-bottom:12px">Marijuana remains a <strong>Schedule I controlled substance under federal law</strong> (DEA/CSA) — meaning no currently accepted medical use and high potential for abuse at the federal level. However, state laws have dramatically expanded marijuana access, creating a significant federal-state legal conflict.</div>
+        <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:12px">
+          <div class="vs-item" style="border-color:var(--green)">
+            <div class="vs-head" style="color:var(--green)">Medical marijuana</div>
+            <div class="vs-body"><strong>37 states</strong> had laws allowing medical marijuana as of November 2021. Typically requires a physician's recommendation (not a traditional prescription, since Schedule I substances cannot be prescribed). Each state has different qualifying conditions, dispensary regulations, and practitioner obligations.</div>
+          </div>
+          <div class="vs-item" style="border-color:var(--blue)">
+            <div class="vs-head" style="color:var(--blue)">Recreational marijuana</div>
+            <div class="vs-body"><strong>18 states, two territories, and Washington D.C.</strong> allowed recreational marijuana as of November 2021. Adults can purchase and use marijuana without a medical reason. Each state has different laws regarding possession limits, sales regulation, and taxation.</div>
+          </div>
+        </div>
+        <div class="tip red"><strong>The federal-state conflict:</strong> Federal employees (including VA healthcare workers) and federal facilities cannot recommend or prescribe marijuana. Healthcare workers in states with legal marijuana still face risks — federal contracts, DEA registration, and federal financial assistance can all be jeopardized. As a healthcare practitioner, always understand both the state law AND any applicable federal law in your jurisdiction.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--red)">Controlled Substances Act (CSA) — Five Schedules</div>
+      <div class="tip red" style="margin-bottom:14px">The Controlled Substances Act provides <strong>five categories (schedules)</strong> of controlled drugs based on their <strong>potential for abuse, accepted medical use, and safety or dependence liability</strong>. The DEA enforces the schedules. Healthcare practitioners must understand this system for legal prescribing, storage, documentation, and dispensing of controlled substances.</div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="sched-card" style="background:var(--red-lt);color:var(--red-dk)">
+          <div class="sched-num" style="background:var(--red)">C-I</div>
+          <div>
+            <div class="sched-title">Schedule I — No accepted medical use; highest abuse potential</div>
+            <div class="sched-body"><strong>Criteria:</strong> High potential for abuse + NO currently accepted medical use in the United States + lack of accepted safety for use under medical supervision. Cannot be prescribed — may only be used in DEA-approved research.<br><strong>Examples:</strong> Heroin, LSD, peyote, psilocybin mushrooms, MDMA (Ecstasy), marijuana (federal classification — though this conflicts with many state laws). <strong>Note:</strong> Marijuana's Schedule I status is the basis of the federal-state marijuana law conflict.</div>
+          </div>
+        </div>
+        <div class="sched-card" style="background:var(--coral-lt);color:var(--coral-dk)">
+          <div class="sched-num" style="background:var(--coral)">C-II</div>
+          <div>
+            <div class="sched-title">Schedule II — High potential for abuse; accepted medical use</div>
+            <div class="sched-body"><strong>Criteria:</strong> High potential for abuse that may lead to <strong>severe psychological or physical dependence</strong> + currently accepted medical use (with severe restrictions).<br><strong>Examples:</strong> Opioids: morphine, oxycodone (OxyContin), fentanyl, hydromorphone (Dilaudid), methadone, meperidine (Demerol). Stimulants: cocaine (for topical anesthesia), methamphetamine, amphetamine (Adderall), methylphenidate (Ritalin). Also: PCP.<br><strong>Prescribing rules:</strong> Written or electronic prescription required — no oral prescriptions except in emergencies (and must be followed by written Rx within 7 days). No refills permitted. Strict dispensing records required.</div>
+          </div>
+        </div>
+        <div class="sched-card" style="background:var(--amber-lt);color:var(--amber-dk)">
+          <div class="sched-num" style="background:var(--amber)">C-III</div>
+          <div>
+            <div class="sched-title">Schedule III — Moderate to low dependence potential</div>
+            <div class="sched-body"><strong>Criteria:</strong> Moderate to low potential for physical and psychological dependence + currently accepted medical use. Lower abuse potential than Schedule I or II.<br><strong>Examples:</strong> Anabolic steroids, codeine combinations (Tylenol with Codeine #3/#4), buprenorphine (Subutex — used for opioid use disorder treatment), testosterone, ketamine, dronabinol (synthetic THC).<br><strong>Prescribing rules:</strong> Prescription may be oral or written; up to 5 refills in 6 months permitted.</div>
+          </div>
+        </div>
+        <div class="sched-card" style="background:var(--green-lt);color:var(--green-dk)">
+          <div class="sched-num" style="background:var(--green)">C-IV</div>
+          <div>
+            <div class="sched-title">Schedule IV — Low abuse potential; low risk of dependence</div>
+            <div class="sched-body"><strong>Criteria:</strong> Low potential for abuse relative to Schedule III + currently accepted medical use + limited physical or psychological dependence.<br><strong>Examples:</strong> Benzodiazepines: alprazolam (Xanax), diazepam (Valium), clonazepam (Klonopin), lorazepam (Ativan). Sleep aids: zolpidem (Ambien), eszopiclone (Lunesta). Other: tramadol, carisoprodol (Soma), phentermine (weight loss).<br><strong>Prescribing rules:</strong> Same as Schedule III — up to 5 refills in 6 months; oral prescriptions acceptable.</div>
+          </div>
+        </div>
+        <div class="sched-card" style="background:var(--teal-lt);color:var(--teal-dk)">
+          <div class="sched-num" style="background:var(--teal)">C-V</div>
+          <div>
+            <div class="sched-title">Schedule V — Lowest controlled substance abuse potential</div>
+            <div class="sched-body"><strong>Criteria:</strong> Lower potential for abuse than Schedule IV + currently accepted medical use + limited physical or psychological dependence compared to Schedule IV.<br><strong>Examples:</strong> Cough preparations containing less than 200 mg of codeine per 100 mL (Robitussin AC); pregabalin (Lyrica — for nerve pain and seizures); lacosamide (Vimpat — anti-seizure); some antidiarrheal preparations containing small amounts of opium (paregoric).<br><strong>Prescribing rules:</strong> May be dispensed without a prescription in some states (with pharmacist oversight); requires purchaser to be 18+ and sign a log; limited quantity per purchase.</div>
+          </div>
+        </div>
+      </div>
+      <div class="tip amber"><strong>Memory aid for the schedules:</strong> Think decreasing restrictiveness from I to V. Schedule I = most restricted (no Rx possible). Schedule V = least restricted (some available OTC). The lower the Roman numeral, the higher the abuse potential and the stricter the prescribing rules. All controlled substances require a DEA-registered prescriber and careful documentation.</div>
+    </div>
+  </div>
+
+  <!-- ════════ FLASHCARDS ════════ -->
+  <div class="section" id="sec-flashcards">
+    <button class="fc-shuffle" onclick="shuffleCards()">⇄ Shuffle cards</button>
+    <div class="fc-nav">
+      <button class="fc-btn" onclick="prevCard()">&#8592;</button>
+      <div class="fc-counter" id="fc-counter">1 / 20</div>
+      <button class="fc-btn" onclick="nextCard()">&#8594;</button>
+    </div>
+    <div class="flip-wrap" onclick="flipCard()">
+      <div class="flip-inner" id="fc-inner">
+        <div class="flip-front"><div class="flip-term" id="fc-term">Controlled Substances Act — Schedule I</div><div class="flip-hint">click to reveal</div></div>
+        <div class="flip-back"><div class="flip-def" id="fc-def">No currently accepted medical use + highest potential for abuse + lack of accepted safety. CANNOT be prescribed — DEA-approved research only.</div><div class="flip-ex" id="fc-ex">Examples: heroin, LSD, peyote, MDMA, psilocybin, marijuana (federal). Marijuana's Schedule I status creates the federal-state legal conflict.</div></div>
+      </div>
+    </div>
+    <div style="font-size:12px;color:var(--gray-400);text-align:center;margin-top:10px">Click to flip · Arrows to navigate</div>
+  </div>
+
+  <!-- ════════ QUIZ ════════ -->
+  <div class="section" id="sec-quiz">
+    <div class="card" id="quiz-card">
+      <div class="quiz-progress" id="quiz-dots"></div>
+      <div class="quiz-q-text" id="quiz-q"></div>
+      <div class="quiz-opts" id="quiz-opts"></div>
+      <div id="quiz-fb" style="display:none"></div>
+      <button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>
+    </div>
+  </div>
+
+</div>
+<script>
+const SECS=['overview','vital','pubhealth','reportable','drugs','flashcards','quiz'];
+const visited=new Set(['overview']);
+function showSec(id,btn){
+  SECS.forEach(s=>document.getElementById('sec-'+s).classList.remove('active'));
+  document.querySelectorAll('.nav-row .tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active'); btn.classList.add('active');
+  visited.add(id);
+  const pct=Math.round((visited.size/SECS.length)*100);
+  document.getElementById('prog-fill').style.width=pct+'%';
+  document.getElementById('prog-label').textContent=pct+'%';
+  if(id==='flashcards') renderCard();
+  if(id==='quiz'&&!quizStarted) startQuiz();
+}
+
+let allCards=[
+  {term:'Controlled Substances Act — Schedule I',def:'No currently accepted medical use + highest potential for abuse + lack of accepted safety. CANNOT be prescribed — DEA-approved research only.',ex:'Examples: heroin, LSD, peyote, MDMA, psilocybin, marijuana (federal classification — conflicts with many state laws)'},
+  {term:'Controlled Substances Act — Schedule II',def:'High potential for abuse that may lead to SEVERE psychological or physical dependence + currently accepted medical use (with severe restrictions)',ex:'Examples: morphine, oxycodone, fentanyl, cocaine (topical), methamphetamine, Adderall, Ritalin. NO refills; written/electronic Rx required.'},
+  {term:'DEA vs. FDA — key distinction',def:'FDA = Department of HHS; tests and approves prescription drugs before market. DEA = Department of Justice; regulates sale and use of drugs (especially controlled substances); issues DEA numbers.',ex:'Practitioner can lose DEA number (prescribing authority) without losing state license and vice versa; both are separate but equally important credentials.'},
+  {term:'Vital statistics — 4 categories',def:'Live births · Deaths · Fetal deaths and induced abortions · Changes in individual\'s civil status (marriage, divorce, adoption)',ex:'Collected by government officials to assess population trends and needs; used by educational institutions, governmental agencies, research scientists, and private industry'},
+  {term:'Reportable diseases — who determines the list',def:'EACH STATE determines its own list of reportable diseases — no single national mandate, though CDC\'s NNDSS tracks nationally notifiable conditions states voluntarily report',ex:'STIs reported upon diagnosis regardless of patient consent; HIV partner notification required; more stringent reporting for public-facing workers'},
+  {term:'VAERS — two reporting triggers',def:'1. Any event listed in the Vaccine Injury Table. 2. Any contraindicating event listed in the manufacturer\'s package insert.',ex:'Vaccine Adverse Events Reporting System co-managed by CDC and FDA; healthcare practitioners have MANDATORY reporting obligations for covered vaccines'},
+  {term:'Mandatory vaccination documentation — 4 elements',def:'1. Date administered · 2. Vaccine manufacturer · 3. Vaccine lot number · 4. Name, address, and title of administering healthcare provider',ex:'Lot number enables product tracing in case of recall or adverse event investigation; all four elements required by federal law for covered vaccines'},
+  {term:'Forensic medicine',def:'The division of medicine that incorporates law and medicine — involves medical issues or medical proof at trials related to malpractice, crimes, and accidents',ex:'Forensic pathologists determine cause and manner of death; forensic experts testify in malpractice cases; analyze injury patterns in accidents and crimes'},
+  {term:'Federalism in public health',def:'The sharing of power among national, state, and local governments. Public health authority derives from the 10th Amendment — reserving non-delegated powers to states or the people.',ex:'States have primary public health authority (licensure, quarantine, vaccination mandates, disease reporting). Federal role: CDC guidance, national standards, Medicare/Medicaid.'},
+  {term:'State enforcement powers — quarantine',def:'States may INVOLUNTARILY DETAIN (quarantine) individuals with certain infectious diseases to prevent community transmission',ex:'One of the most powerful public health tools; must meet constitutional due process requirements; highly controversial when applied; used in COVID-19, TB, Ebola situations'},
+  {term:'Mandatory child abuse reporting',def:'ALL states require healthcare practitioners to report SUSPECTED (not proven) child abuse or neglect; no proof required — reasonable suspicion is the threshold',ex:'Good-faith reporters protected from civil and criminal liability; FAILURE to report is a crime in all states; most states also require mandatory reporting of elder abuse'},
+  {term:'Schedule III — examples and rules',def:'Moderate to low dependence potential + accepted medical use. Examples: anabolic steroids, codeine combinations, buprenorphine, ketamine, testosterone. Up to 5 refills in 6 months.',ex:'Buprenorphine (Subutex) is Schedule III — used to treat opioid use disorder; must be prescribed by specially certified practitioners (X-waivered under DATA 2000, now integrated)'},
+  {term:'Schedule IV — examples and rules',def:'Low abuse potential + accepted medical use + limited dependence. Examples: benzodiazepines (Xanax, Valium, Ativan), zolpidem (Ambien), tramadol, phentermine. Up to 5 refills in 6 months.',ex:'Benzodiazepines are the most commonly prescribed Schedule IV drugs; often co-prescribed with opioids (Schedule II) — dangerous combination requiring practitioner awareness'},
+  {term:'National Childhood Vaccine Injury Act (1986)',def:'Established limited manufacturer liability for certain childhood vaccine adverse reactions; created the VICP as a no-fault compensation system',ex:'Patients must file through VICP before most civil suits against vaccine manufacturers; ensures vaccine supply by protecting manufacturers from excessive litigation'},
+  {term:'Vital statistics — death certificate',def:'Required information: disease/injury/complication causing death · date and time · place of death · pregnancy status (if female) · whether autopsy was performed',ex:'Autopsy is mandatory for: possible criminal causes, unattended death, undetermined cause, violent or suspicious death'},
+  {term:'Deaths requiring mandatory autopsy — 4 types',def:'1. Possibly due to criminal causes · 2. Unattended death · 3. Cause undetermined by physician · 4. Violent or otherwise suspicious death',ex:'Performed by medical examiner or coroner; findings become part of the official legal record; may be basis for criminal prosecution or cause of death dispute'},
+  {term:'Marijuana — federal vs. state status',def:'Federal law (DEA/CSA): Schedule I — no accepted medical use. State law: 37+ states allow medical marijuana; 18+ states allow recreational use (as of 2021)',ex:'Cannot be prescribed federally (only recommended by physicians in legal states); VA and federal facilities cannot use; creates significant compliance issues for healthcare practitioners'},
+  {term:'Public health statutes — 6 provisions',def:'1. Guard against unsanitary conditions · 2. Inspect food/drink establishments · 3. Exterminate disease-spreading pests · 4. Check water quality · 5. Control certain diseases · 6. Require healthcare workers to file protective reports',ex:'All six represent government\'s active responsibility to maintain conditions for population health — going beyond individual clinical care to environmental and community protection'},
+  {term:'Unborn Victims of Violence Act',def:'Federal law (Laci and Conner\'s Law) recognizing an unborn child as a separate victim when a federal crime against a pregnant woman kills or injures the child',ex:'Creates a separate criminal offense for fetal harm; important for forensic medicine; relevant to injury reporting in cases of violence against pregnant women'},
+  {term:'Recording vital statistics — 8 guidelines',def:'Type/print all entries · Leave no blanks · Avoid corrections/erasures · Provide signatures · File originals with state registrars · Verify name spelling · Avoid abbreviations · Refer problems to state officials',ex:'These guidelines apply to all vital records (birth certificates, death certificates, fetal death reports); errors cause significant legal problems for families for generations'},
+];
+let fcIdx=0,fcFlipped=false;
+function renderCard(){
+  const c=allCards[fcIdx];
+  document.getElementById('fc-term').textContent=c.term;
+  document.getElementById('fc-def').textContent=c.def;
+  document.getElementById('fc-ex').textContent=c.ex;
+  document.getElementById('fc-counter').textContent=(fcIdx+1)+' / '+allCards.length;
+  document.getElementById('fc-inner').classList.remove('flipped'); fcFlipped=false;
+}
+function flipCard(){ fcFlipped=!fcFlipped; document.getElementById('fc-inner').classList.toggle('flipped',fcFlipped); }
+function nextCard(){ fcIdx=(fcIdx+1)%allCards.length; renderCard(); }
+function prevCard(){ fcIdx=(fcIdx-1+allCards.length)%allCards.length; renderCard(); }
+function shuffleCards(){
+  for(let i=allCards.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [allCards[i],allCards[j]]=[allCards[j],allCards[i]]; }
+  fcIdx=0; renderCard();
+}
+
+const QUIZ=[
+  {q:'A physician is treating a patient who has been diagnosed with gonorrhea. Under reportable disease law, the physician is required to:',ans:'Report the diagnosis to the public health department — this is a mandatory obligation regardless of patient consent, overriding normal confidentiality',opts:['Notify the patient\'s spouse or partner directly — the physician has an absolute duty to warn identified third parties','Obtain the patient\'s written consent before reporting to the health department, since this overrides normal confidentiality','Report the diagnosis to the public health department — this is a mandatory obligation regardless of patient consent, overriding normal confidentiality','Recommend that the patient voluntarily self-report to the health department — mandatory reporting applies only to physicians employed by public health agencies']},
+  {q:'Marijuana is classified as a Schedule I controlled substance under federal law, which means:',ans:'It has no currently accepted medical use under federal law and cannot be prescribed — only used in DEA-approved research programs',opts:['It has moderate to low potential for dependence and can be prescribed with up to five refills in a six-month period','It has high potential for abuse but is accepted for medical use with severe prescribing restrictions','It has no currently accepted medical use under federal law and cannot be prescribed — only used in DEA-approved research programs','It can be prescribed by physicians in states where medical marijuana is legal because state law supersedes federal law on this issue']},
+  {q:'A nurse practitioner treats a child who has multiple unexplained fractures in various stages of healing. The NP suspects child abuse. Under mandatory reporting law, the NP must:',ans:'Report the suspected abuse to child protective services immediately — reasonable suspicion is sufficient; proof is not required',opts:['Consult with the attending physician first, as mandatory reporting is only required when the physician agrees abuse has occurred','Document the injuries thoroughly and wait for the child\'s next scheduled appointment before making a determination','Report the suspected abuse to child protective services immediately — reasonable suspicion is sufficient; proof is not required','Discuss the injuries privately with the child\'s parents to determine whether there is a reasonable explanation before contacting authorities']},
+  {q:'Which federal agency within the Department of Justice is responsible for regulating the sale and use of controlled substances and enforcing the Controlled Substances Act?',ans:'The Drug Enforcement Administration (DEA) — a branch of the Department of Justice that regulates controlled substances',opts:['The Food and Drug Administration (FDA) — which approves all drugs before they can be marketed and dispensed in the United States','The Centers for Disease Control and Prevention (CDC) — which monitors drug safety and reports adverse drug events through VAERS','The Drug Enforcement Administration (DEA) — a branch of the Department of Justice that regulates controlled substances','The Centers for Medicare and Medicaid Services (CMS) — which sets standards for drug coverage under federal healthcare programs']},
+  {q:'A patient dies in the hospital and the attending physician is unsure of the cause of death. Under vital statistics law, this death:',ans:'Requires a mandatory autopsy — deaths where the cause is undetermined by the physician are subject to mandatory autopsy',opts:['Must be recorded on the death certificate as "cause unknown" and submitted to the state registrar within 24 hours','Requires the physician to consult with a specialist before completing the death certificate — no autopsy is required','Requires a mandatory autopsy — deaths where the cause is undetermined by the physician are subject to mandatory autopsy','Is handled through the hospital\'s quality assurance program — state reporting is not required for in-hospital deaths']},
+  {q:'Public health authority in the United States is primarily a state power derived from:',ans:'The 10th Amendment — which reserves all powers not delegated to the federal government to the states or to the people',opts:['The 14th Amendment — which established equal protection and due process rights for all persons under state jurisdiction','The Commerce Clause — which gives Congress the power to regulate activities affecting interstate commerce including healthcare','The 10th Amendment — which reserves all powers not delegated to the federal government to the states or to the people','The 1st Amendment — which protects freedom of association and gives states authority to protect public gatherings']},
+  {q:'A healthcare practitioner administers a scheduled vaccine and the patient experiences an adverse event listed in the Vaccine Injury Table. The practitioner is legally required to:',ans:'Report the event to VAERS (Vaccine Adverse Events Reporting System) — mandatory reporting for events listed in the Vaccine Injury Table',opts:['Complete an incident report for the practice\'s internal quality assurance program — external reporting is voluntary for non-serious events','Inform the patient\'s next of kin and document the event in the medical record — no external reporting is required unless the event is fatal','Report the event to VAERS (Vaccine Adverse Events Reporting System) — mandatory reporting for events listed in the Vaccine Injury Table','Refer the patient directly to the VICP to file a compensation claim — the treating practitioner\'s reporting obligation ends at referral']},
+  {q:'A Schedule II controlled substance differs from a Schedule IV controlled substance primarily in that Schedule II drugs:',ans:'Have a high potential for abuse that may lead to severe dependence, require written/electronic prescriptions, and have NO refills permitted',opts:['Are approved for medical use but only in specialty hospitals — they cannot be dispensed in outpatient pharmacy settings','Have no currently accepted medical use in the United States and can only be used in DEA-approved research','Have a high potential for abuse that may lead to severe dependence, require written/electronic prescriptions, and have NO refills permitted','Require a separate DEA Form 222 for each individual patient prescription and cannot be electronically prescribed under any circumstances']},
+  {q:'The National Childhood Vaccine Injury Act of 1986 established the VICP primarily to:',ans:'Provide a no-fault federal compensation system for vaccine adverse reactions while protecting manufacturers from excessive liability to maintain vaccine supply',opts:['Make all childhood vaccines free of charge for families regardless of income or insurance status','Require all states to mandate specific childhood vaccines for school entry, creating a uniform national vaccination schedule','Provide a no-fault federal compensation system for vaccine adverse reactions while protecting manufacturers from excessive liability to maintain vaccine supply','Establish VAERS as the mandatory federal reporting system for all adverse events following vaccination in the United States']},
+  {q:'A public health official uses state authority to involuntarily detain an individual with active, drug-resistant tuberculosis who has refused treatment. This action is BEST described as:',ans:'Quarantine — a state enforcement power to involuntarily detain individuals with certain infectious diseases to protect community health',opts:['Incarceration — a criminal penalty requiring prior conviction that does not apply to public health interventions','Civil commitment — a legal process used exclusively for persons with serious mental illness who present a danger to themselves','Quarantine — a state enforcement power to involuntarily detain individuals with certain infectious diseases to protect community health','Emergency consent — an implied authorization to treat the patient based on the necessity of preventing community harm']},
+];
+let qIdx=0,score=0,results=[],quizStarted=false;
+function startQuiz(){ quizStarted=true; qIdx=0; score=0; results=[]; renderQ(); }
+function renderQ(){
+  const q=QUIZ[qIdx];
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  document.getElementById('quiz-q').textContent=(qIdx+1)+'. '+q.q;
+  document.getElementById('quiz-opts').innerHTML=q.opts.map(o=>`<button class="q-opt" onclick="checkAns(this,'${o.replace(/'/g,"\\'")}','${q.ans.replace(/'/g,"\\'")}')">${o}</button>`).join('');
+  const fb=document.getElementById('quiz-fb'); fb.style.display='none'; fb.className='q-fb';
+  document.getElementById('quiz-next').style.display='none';
+}
+function checkAns(btn,chosen,correct){
+  document.querySelectorAll('.q-opt').forEach(b=>{ b.disabled=true; if(b.textContent===correct) b.classList.add('correct'); });
+  const ok=chosen===correct;
+  if(ok){ score++; btn.classList.add('correct'); } else btn.classList.add('wrong');
+  results.push(ok);
+  document.getElementById('quiz-dots').innerHTML=QUIZ.map((_,i)=>`<div class="q-dot ${i<results.length?(results[i]?'pass':'fail'):''}" title="Q${i+1}"></div>`).join('');
+  const fb=document.getElementById('quiz-fb');
+  fb.style.display='block'; fb.className='q-fb '+(ok?'correct':'wrong');
+  fb.textContent=ok?'✓ Correct!':`✗ Correct answer: ${correct}`;
+  const nxt=document.getElementById('quiz-next');
+  nxt.style.display='inline-block';
+  nxt.textContent=qIdx===QUIZ.length-1?'See results':'Next question →';
+}
+function nextQ(){ qIdx++; if(qIdx>=QUIZ.length){ showScore(); return; } renderQ(); }
+function showScore(){
+  const pct=Math.round((score/QUIZ.length)*100);
+  const cls=pct>=80?'great':pct>=60?'ok':'retry';
+  const msg=pct>=90?'Excellent! Chapter 9 mastered.':pct>=70?'Good work! Review the CSA schedules and reportable injuries.':'Keep studying — revisit Drug Schedules, Reportable Diseases and Injuries, and Public Health Functions.';
+  document.getElementById('quiz-card').innerHTML=`<div class="score-wrap"><div class="score-big ${cls}">${score}/${QUIZ.length}</div><div style="font-size:13px;color:var(--gray-400);margin-top:4px">${pct}%</div><div class="score-msg">${msg}</div><button class="retry-btn" onclick="retakeQuiz()">Retake quiz</button></div>`;
+}
+function retakeQuiz(){
+  document.getElementById('quiz-card').innerHTML=`<div class="quiz-progress" id="quiz-dots"></div><div class="quiz-q-text" id="quiz-q"></div><div class="quiz-opts" id="quiz-opts"></div><div id="quiz-fb" style="display:none"></div><button class="quiz-next" id="quiz-next" onclick="nextQ()" style="display:none">Next question →</button>`;
+  qIdx=0; score=0; results=[]; renderQ();
+}
+</script>
+</body>
+</html>
